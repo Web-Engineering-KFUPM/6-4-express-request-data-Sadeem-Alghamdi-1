@@ -35,7 +35,9 @@ LAB SETUP INSTRUCTIONS
  *   HINT: 
  *     const app = express();
  *     app.listen(3000, ()=> console.log(...));
- * 
+ *
+*
+
  *============================================
  * TODO-2 (/echo route):
  * ============================================
@@ -105,9 +107,9 @@ LAB SETUP INSTRUCTIONS
  */
 
 //import express
-
-
+import express from "express";
 // create express app instance to create web server
+const app = express();
 
 
 
