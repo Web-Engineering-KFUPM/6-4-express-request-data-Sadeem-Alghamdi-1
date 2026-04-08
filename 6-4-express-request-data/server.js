@@ -105,11 +105,14 @@ LAB SETUP INSTRUCTIONS
  *   → 400 { ok:false, error:"userId must be positive number" }
  *
  */
-
-//import express
 import express from "express";
-// create express app instance to create web server
+
 const app = express();
+
+// Root route
+app.get("/", (req, res) => {
+ res.send("Server is up");
+});
 
 // Query params: /echo?name=Ali&age=22
 app.get("/echo", (req, res) => {
@@ -121,6 +124,7 @@ app.get("/echo", (req, res) => {
    error: "name & age required",
   });
  }
+
  res.json({
   ok: true,
   name,
@@ -139,7 +143,7 @@ app.get("/profile/:first/:last", (req, res) => {
  });
 });
 
-// Route param middleware example: /users/42
+// Param middleware
 app.param("userId", (req, res, next, userId) => {
  const userIdNum = Number(userId);
 
@@ -154,7 +158,7 @@ app.param("userId", (req, res, next, userId) => {
  next();
 });
 
-// Route params: /users/:userId route
+// /users/:userId route
 app.get("/users/:userId", (req, res) => {
  res.json({
   ok: true,
@@ -165,8 +169,3 @@ app.get("/users/:userId", (req, res) => {
 app.listen(3000, () => {
  console.log("API running at http://localhost:3000");
 });
-
-
-// Start the server by listening
-
-
